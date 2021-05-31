@@ -1,6 +1,7 @@
 import pygame
 import sys
 import time
+from floors import *
 
 """
 <<<<[GLOBAL CONSTANTS]>>>>
@@ -58,5 +59,13 @@ def main():
     pygame.quit()
     quit()
 
-main()
+# main()
+
+
+
+
+a = Floor()
+b = Floor()
+c = Floor()
+
 
