@@ -1,1 +1,23 @@
-"Yup" -
+[RESOURCES]
+- Pygame?
+
+
+<<<<<<<<{{{ commit 01039d3bb4ad7635db09958d21d0d59e13bcf0c8 }}}>>>>>>>>
+- We're gonna implement the visualisation part of the project in pygame
+- Going to test implementating image scaling of the input PNG file to fit display of a certain dimension.
+    - I discovered that scaling the image too much from it's original dimensions cause the image to end up lower quality.
+      I suppose it might be better that I look into displaying image of it's original dimensions if it's reasonable...?
+
+
+
+
+
+
+
+
+
+
+
+
+
+[End]
