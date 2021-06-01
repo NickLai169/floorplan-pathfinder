@@ -20,10 +20,8 @@ Notes:
 Note that I have not tested this as of yet.
 
 
-git commt -m "Finishng prototype floors.py and implementation of features.py"
-
-
-
+<<<<<<<<{{{ commit 01039d3bb4ad7635db09958d21d0d59e13bcf0c8 }}}>>>>>>>>
+- Implemeneted Nodes, but not yet expansion.
 
 
 

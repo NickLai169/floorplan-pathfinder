@@ -1,6 +1,7 @@
 import sys
 import time
 import pygame
+from features import *
 
 
 
@@ -12,18 +13,18 @@ class Floor:
     
     def __init__(self):
         """
-        node_count:         [Integer] denoting the number of "nodes" in the floorplan
-        nodes:              [Integer] denoting the number of "passage points" in the floorplan, these are
-                                things inpasssageways like intersections, corners, in front of doors.
+        node_count:         [Integer] denoting the number of "nodes" in the [Floor]
+        nodes:              [List] of all the "passage points" in the floorplan, these are things like
+                                passsageways, intersections, corners, in front of doors.
         doors:              [Dictionary] mapping of all the doors to the nodes they connect to
-        door_count:         [Integer] denoting the number of doors in the floor
+        door_count:         [Integer] denoting the number of doors in the [Floor]
         connections:        [Dictionary] mapping of all the connections to the other Floor objects that 
                                 they connect to
-        connections_count:  [Integer] denoting the number of connecting points to other floors
+        connections_count:  [Integer] denoting the number of connecting points to other [Floors]
         scale:              [Float] distance (in meters) per pixel of the floorplan
         
         """
-        self.nodes = {}
+        self.nodes = []
         self.node_count = 0
         self.doors = {}
         self.door_count = 0
@@ -32,18 +33,19 @@ class Floor:
         self.scale = 1
     
     def __repr__(self):
-        return self.name
+        return "{}: {}".format(self.name, self.connections)
     
     
     """
-    Connects this Floor to another Floor by adding a connection
+    Connects this [Floor] to another [Floor] by adding a connection
     """
-    def connect_floor(self, other_floor,connection):
+    def connect_floor(self, other_floor, connection):
         self.connections[connection] = other_floor
         self.connections_count += 1
     
+
     """
-    Disconnect this Floor to the target other Floor
+    Disconnect this [Floor] to the target other [Floor]
     """
     def disconnect_floor(self, other_floor):
         deletion = False
@@ -70,7 +72,18 @@ class Floor:
     
 
     """
-    [GET and SET METHODS]
+    Creates a new node on the Floor
+    """
+    def make_node(self, name="Unamed Node", x=None, y=None):
+        new_node = Node(self, name, x, y)
+        self.nodes.append(new_node)
+        self.node_count += 1
+
+        return new_node
+
+
+    """
+    <<<<<<<<<<[GET and SET METHODS]>>>>>>>>>>
     """
     def get_nodes(self):
         return self.get_nodes
@@ -89,3 +102,6 @@ class Floor:
     
     def get_connections_count(self):
         return self.connections_count
+    
+    def get_scale(self):
+        return self.scale

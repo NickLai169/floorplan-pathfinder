@@ -64,8 +64,21 @@ def main():
 
 
 
-a = Floor()
-b = Floor()
-c = Floor()
+first_floor = Floor()
 
+print(first_floor)
 
+a = first_floor.make_node(name="a", x=0, y=0)
+b = first_floor.make_node(name="b", x=1, y=1)
+c = first_floor.make_node("c", 1, 0)
+d = first_floor.make_node(x=0, y=1)
+
+a.connect_nodes(b)
+b.connect_nodes(c)
+a.connect_nodes(c)
+d.connect_nodes(a)
+
+print(a)
+print(b)
+print(c)
+print(d)
