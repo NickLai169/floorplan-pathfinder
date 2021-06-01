@@ -12,7 +12,7 @@ Notes:
 - Implemented diplaying of the floorplan image in tester.py
 
 
-<<<<<<<<{{{ commit 01039d3bb4ad7635db09958d21d0d59e13bcf0c8 }}}>>>>>>>>
+<<<<<<<<{{{ commit d5d29fbf4ee17f01d925238cc38f71613eb289b5 }}}>>>>>>>>
 - Implemented skeleton floors.py
 - Implemented skeleton of features.py
   - Going to finish after this commit :D
@@ -20,11 +20,18 @@ Notes:
 Note that I have not tested this as of yet.
 
 
-<<<<<<<<{{{ commit 01039d3bb4ad7635db09958d21d0d59e13bcf0c8 }}}>>>>>>>>
+<<<<<<<<{{{ commit 1e368087724b0576585c7918f12ddb0ba31f0204 }}}>>>>>>>>
 - Implemeneted Nodes, but not yet expansion.
 
 
+<<<<<<<<{{{ commit 6471a82776b5dbbebb3b964dbef1f1bc85bf420c }}}>>>>>>>>
+We're going to begin implementing a simple traversal algorithm
 
+- Implemented BFS
+- Implmented A* Search
+- Implemented Dijkstras
+
+I can probably begin on the visualisation section before adding more features?
 
 
 

@@ -21,7 +21,13 @@ class Node:
         self.parent_Floor = parent_floor
         self.name = name
     
+
     def __repr__(self):
+        return "[{node_type}] {name} | Position: {position}".format(
+                node_type=self.node_type, name=self.name, position=self.get_position()
+            )
+    
+    def __str__(self):
         ret_str = "[{node_type}] {name} | Position: {position}\nEdges: ".format(
                 node_type=self.node_type, name=self.name, position=self.get_position()
             )
@@ -44,8 +50,9 @@ class Node:
     """
     Connectes two nodes by adding an edge going from each way
     """
-    def connect_nodes(self, other_node):
-        distance = self.calculate_distance(other_node)
+    def connect_nodes(self, other_node, distance=None):
+        if not distance:
+            distance = self.calculate_distance(other_node)
         self.edges[other_node] = distance
         other_node.edges[self] = distance
 
@@ -54,7 +61,6 @@ class Node:
     Calculates the distance in meters between two nodes, assuming no obstacles between them
     """
     def calculate_distance(self, other_node):
-        print("calculating from {} to {}".format(self.name, other_node.name))
         if any([i == None for i in [self.x, self.y, other_node.get_x(), other_node.get_y()]]):
             return None 
         scaling = self.parent_Floor.get_scale()
@@ -73,6 +79,22 @@ class Node:
     
 
     """
+    Gets the distance between two nodes
+        - returns the length of the edge
+        - If there is no preset distance, it calculates the distance
+        - If any node is missing coordinates then it errors
+    """
+    def get_distance(self, other_node):
+        if other_node in self.get_edges():
+            return self.get_edges()[other_node]
+        elif all([i != None for i in [self.x, self.y, other_node.get_x(), other_node.get_y()]]):
+            return self.calculate_distance(other_node)
+        else:
+            print(self.x, self.y, other_node.get_x(), other_node.get_y())
+            raise Exception("missing coordinates") 
+    
+
+    """
     Simply removes a connection, throwing print statements if this connection didn't exist.
     """
     def remove_connection(self, other_node):
@@ -83,6 +105,13 @@ class Node:
         if not failed:
             print("No such edge from", other_node, "to", self)
             print("WARNING THAT EDGE FROM SELF TO OTHER_NODE WAS DELETED")
+    
+
+    """
+    Expands a node by returning all the accessible neighbours
+    """
+    def expand(self, traveller):
+        return [neighbour for neighbour in self.get_edges()]
 
 
     """

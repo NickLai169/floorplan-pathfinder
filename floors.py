@@ -18,7 +18,7 @@ class Floor:
                                 passsageways, intersections, corners, in front of doors.
         doors:              [Dictionary] mapping of all the doors to the nodes they connect to
         door_count:         [Integer] denoting the number of doors in the [Floor]
-        connections:        [Dictionary] mapping of all the connections to the other Floor objects that 
+        connections:        [Dictionary] mapping of all the connecting [Nodes] to the other Floor objects that 
                                 they connect to
         connections_count:  [Integer] denoting the number of connecting points to other [Floors]
         scale:              [Float] distance (in meters) per pixel of the floorplan
@@ -39,9 +39,13 @@ class Floor:
     """
     Connects this [Floor] to another [Floor] by adding a connection
     """
-    def connect_floor(self, other_floor, connection):
-        self.connections[connection] = other_floor
+    def connect_floor(self, other_floor, my_connection, their_connection, distance=0):
+        self.connections[my_connection] = other_floor
         self.connections_count += 1
+
+        my_connection.set_distance(distance, their_connection)
+
+
     
 
     """

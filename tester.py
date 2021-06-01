@@ -1,7 +1,9 @@
 import pygame
 import sys
 import time
+import itertools
 from floors import *
+from traversal import *
 
 """
 <<<<[GLOBAL CONSTANTS]>>>>
@@ -63,22 +65,26 @@ def main():
 
 
 
-
 first_floor = Floor()
 
-print(first_floor)
-
 a = first_floor.make_node(name="a", x=0, y=0)
-b = first_floor.make_node(name="b", x=1, y=1)
-c = first_floor.make_node("c", 1, 0)
-d = first_floor.make_node(x=0, y=1)
+b = first_floor.make_node(name="b", x=1, y=0)
+c = first_floor.make_node("c", x=1, y=1)
+d = first_floor.make_node(name="d", x=2, y=1)
+e = first_floor.make_node(name="e", x=1, y=2)
+f = first_floor.make_node(name="f", x=2, y=2)
+g = first_floor.make_node(name="g", x=3, y=2)
 
 a.connect_nodes(b)
 b.connect_nodes(c)
-a.connect_nodes(c)
-d.connect_nodes(a)
+b.connect_nodes(d)
+c.connect_nodes(e)
+d.connect_nodes(f)
+e.connect_nodes(g)
+e.connect_nodes(f)
 
-print(a)
-print(b)
-print(c)
-print(d)
+# for pair in itertools.combinations([a, b, c, d, e, f, g], 2):
+#     print(repr(pair[0]), "->", repr(pair[1]), ":", pair[0].get_distance(pair[1]))
+
+bfs_search = A_Star_Search()
+print(bfs_search.find_path(a, g, None))
