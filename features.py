@@ -1,9 +1,13 @@
 import math
 
 """
-Nodes are feature objects, they can be connections, doors, or just simply nodes
+This is the features module, containing all the objects that a floorplan is composed of.
 """
+
 class Node:
+    """
+    Nodes are feature objects, they can be connections, doors, or just simply nodes
+    """
     node_type = "Node"
     name = "Unamed Node"
 

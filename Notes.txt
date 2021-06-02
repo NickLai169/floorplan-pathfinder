@@ -34,6 +34,9 @@ We're going to begin implementing a simple traversal algorithm
 I can probably begin on the visualisation section before adding more features?
 
 
+<<<<<<<<{{{ commit 65ce8e60910f6bbf290a36abd6a776fb35c2b29f }}}>>>>>>>>>
+
+- Done some organising and additional documentation.
 
 
 

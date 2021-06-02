@@ -5,10 +5,10 @@ from features import *
 
 
 
-"""
-Floors represent each individual floorplan, they do not necessarily have to be based on an image.
-"""
 class Floor:
+    """
+    Floors represent each individual floorplan, they do not necessarily have to be based on an image.
+    """
     name = "Unamed floorplan"
     
     def __init__(self):

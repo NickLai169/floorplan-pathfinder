@@ -1,5 +1,9 @@
 from abc import ABC, abstractmethod
 from features import *
+
+"""
+This is the traversal moduel, with the different searching algorithm classes
+"""
  
 class Pathfinder(ABC):
  
@@ -9,6 +13,8 @@ class Pathfinder(ABC):
         start:      [Node] of the start location
         target:     [Node] of the destination location
         traveller:  [User] who is traversing the graph
+        @return:    [List] of the nodes that you must traverse to get from start
+                    to the target inclusive.
         """
         pass
 
