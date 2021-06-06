@@ -66,4 +66,47 @@ I can't seem to solve the above problem, going to implement workaround
 - Implemented highlights of nodes
 - Implemented connecting edges vla click command
 
+
+<<<<<<<<{{{ commit f28dba3ccbc520a7b6ca3f90a2ba5de40da2767d }}}>>>>>>>>
+I think we should consider the commanding logic:
+- Left click the highlighted node to unhighlight it
+  - This is for the purpose of highlighting a new node.
+- Left click to highlight a node if no nodes are highlighted
+  - If at least a node is, create edge between all highlighted nodes and target node
+- Left click blank space to create a new node and highlight it
+- Right click a node to create an edge between prev_node and it, setting it
+  as the new "prev_node"
+  - this is equivalent to traversing to it.
+- Right click blank space to unhighlight previously highlighted node
+  - Repeatedly right click to keep backtracking highlights?
+  - No modification to floorplan
+
+Note: Ideas for case of "Right clicking highlighted node" exist, but aren't
+set as features.
+  - Click and drag to move?
+  - Special settings?
+Note: We don't have a command for visualising traversal yet. Can pygame even support multi keys?
+
+Let's try implementing these 6 items first, and then we'll see if we can get to
+also implementing visualisation of the traversal
+
+
+- Implemented [Left click] [Highlighted node]
+- Implemented [Left click] [Unhighlighted node]
+- Implemented [Left click] [Blank spot]
+- Implemented [Right click] [Highlighted node]
+- Implemented [Right click] [Unhighlighted node]
+- Implemented [Right click] [Blank spot]
+
+Note that I don't actually have a method for highlighting multiple nodes... Hmm, would that be necessary?
+
+
+
+
+
+
+
+
+
+
 [End]

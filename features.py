@@ -31,11 +31,13 @@ class Node:
         self.image = pygame.image.load("assets/Node.png").convert_alpha()
         self.high_image = pygame.image.load("assets/Node highlighted.png").convert_alpha()
         self.highlighted = False
-    
 
     def __repr__(self):
+        node_type = self.node_type
+        if self.highlighted:
+            node_type = node_type.capitalize()
         return "[{node_type}] {name} | Position: {position}".format(
-                node_type=self.node_type, name=self.name, position=self.get_pos()
+                node_type=node_type, name=self.name, position=self.get_pos()
             )
     
     def __str__(self):
