@@ -4,7 +4,6 @@ import time
 import itertools
 from floors import *
 from traversal import *
-from main import DISPLAY_HEIGHT, DISPLAY_WIDTH
 
 """
 This is the visualization moduel, condtaing helper functions to help visualise and interact
@@ -29,10 +28,18 @@ def scale_image(display_width, display_height, image):
 
 
 """
-Takes in an image and displayes it on the center of the screen
+Takes in an image and displayes it on the centre of the screen
 """
 def display_center(gameDisplay, image):
+    display_width = gameDisplay.get_width()
+    display_height = gameDisplay.get_height()
     image_width, image_height = image.get_size()
-    x = round((DISPLAY_WIDTH - image_width) / 2)
-    y = round((DISPLAY_HEIGHT - image_height) / 2)
+    x = round((display_width - image_width) / 2)
+    y = round((display_height - image_height) / 2)
     gameDisplay.blit(image, (x, y))
+
+"""
+Takes in an image and displays it centred at the location
+"""
+def display_at(gameDisplay, image, pos):
+    pass

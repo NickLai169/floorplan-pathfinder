@@ -1,4 +1,5 @@
 import math
+import pygame
 
 """
 This is the features module, containing all the objects that a floorplan is composed of.
@@ -18,29 +19,35 @@ class Node:
         edges:          [Dictionary] mapping neighbouring [Node] to [Float] distance between the two
         parent_floor:   [Floor] of which this node belongs to
         name:           [Strong] name of this node
+        image           [pygame.Surface] image/surface which hosts the png of this node
+        highlighted     [Boolean] representing whether this node is in it's highlightes state
+        high_image      [pygame.Surface] image/surface which hosts the png of the highlighted node
         """
         self.x = x
         self.y = y
         self.edges = {}
         self.parent_Floor = parent_floor
         self.name = name
+        self.image = pygame.image.load("assets/Node.png").convert_alpha()
+        self.high_image = pygame.image.load("assets/Node highlighted.png").convert_alpha()
+        self.highlighted = False
     
 
     def __repr__(self):
         return "[{node_type}] {name} | Position: {position}".format(
-                node_type=self.node_type, name=self.name, position=self.get_position()
+                node_type=self.node_type, name=self.name, position=self.get_pos()
             )
     
     def __str__(self):
         ret_str = "[{node_type}] {name} | Position: {position}\nEdges: ".format(
-                node_type=self.node_type, name=self.name, position=self.get_position()
+                node_type=self.node_type, name=self.name, position=self.get_pos()
             )
         edges_string = ""
         count = 1
         for other_node in self.edges:
             name = other_node.get_name()
             if name == "Unamed Node":
-                name = other_node.get_position()
+                name = other_node.get_pos()
             
             edges_string += "({name} -> [{other_type}]{other_name}: {distance}) ".format(
                     name=self.name,other_type=other_node.get_type(), other_name=other_node.get_name(), distance=self.edges[other_node]
@@ -116,7 +123,44 @@ class Node:
     """
     def expand(self, traveller):
         return [neighbour for neighbour in self.get_edges()]
+    
 
+    """
+    Displays the node on the screen
+    """
+    def display(self, display):
+        image = self.image
+        if self.highlighted:
+            image = pygame.image.load("assets/Node highlighted.png").convert_alpha()
+        width, height = image.get_size()
+        display.blit(image, (self.x - round(width/2), self.y - round(height/2)))
+
+    
+    """
+    Returns True or False depending on whether there is a collision between 
+    self and (x,y) on display
+    """
+    def collision(self, x, y):
+        width, height = self.image.get_size()
+        distance = ((x - self.x)**2 + (y - self.y)**2 )**(1/2)
+        if distance < width/2:
+            return True
+        return False
+    
+
+    """
+    Highlights the current node by setting self.highlighted = True
+    """
+    def highlight(self):
+        self.highlighted = True
+    
+
+    """
+    Unhighlights the current node by setting self.highlighted = False
+    """
+    def unhighlight(self):
+        self.highlighted = False
+    
 
     """
     <<<<<<<<<<[GET and SET METHODS]>>>>>>>>>>
@@ -127,7 +171,7 @@ class Node:
     def get_y(self):
         return self.y
     
-    def get_position(self):
+    def get_pos(self):
         return (self.x, self.y)
     
     def get_edges(self):
@@ -141,3 +185,9 @@ class Node:
     
     def get_type(self):
         return self.node_type
+    
+    def get_image(self):
+        return self.image
+    
+    def highlighted(self):
+        return self.highlight

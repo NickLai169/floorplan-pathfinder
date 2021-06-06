@@ -11,7 +11,7 @@ class Floor:
     """
     name = "Unamed floorplan"
     
-    def __init__(self):
+    def __init__(self, display):
         """
         node_count:         [Integer] denoting the number of "nodes" in the [Floor]
         nodes:              [List] of all the "passage points" in the floorplan, these are things like
@@ -31,6 +31,7 @@ class Floor:
         self.connections = {}
         self.connections_count = 0
         self.scale = 1
+        self.display = display
     
     def __repr__(self):
         return "{}: {}".format(self.name, self.connections)
@@ -109,3 +110,9 @@ class Floor:
     
     def get_scale(self):
         return self.scale
+    
+    def get_image(self):
+        return self.image
+    
+    def get_display(self):
+        return self.display

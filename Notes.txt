@@ -34,12 +34,36 @@ We're going to begin implementing a simple traversal algorithm
 I can probably begin on the visualisation section before adding more features?
 
 
-<<<<<<<<{{{ commit 65ce8e60910f6bbf290a36abd6a776fb35c2b29f }}}>>>>>>>>>
+<<<<<<<<{{{ commit 65ce8e60910f6bbf290a36abd6a776fb35c2b29f }}}>>>>>>>>
 
 - Done some organising and additional documentation.
 
 
+<<<<<<<<{{{ commit e5cb8d2a97df85fb3434ef152299b858e02d9854 }}}>>>>>>>>
+Let's begin playing around with the visualiser and classes and whatnot
 
+- Manage to implement generation of a node on press of "n"
 
+let's try "connect" two edges. Consideration:
+- Should I make edges actual objects?
+  - More moving parts bad >:(
+- Or should I keep edges as is?
+  - Might have restrictions on future development?
+    - The hell type of future development are there gonna be jackass?
+    - You is right
+
+Going to implement visualising edges without implementing new "edge" objects,
+however, I will first need to test detecting clicking on an object.
+
+Getting some weird ass error:
+  'pygame.Rect' object has no attribute 'update'
+The heck? The documentations say explicitely that pygame.Rext has the method "update"
+
+I can't seem to solve the above problem, going to implement workaround
+
+- Implemented Node.collision() method
+  - This addresses the collision surface/rect problem
+- Implemented highlights of nodes
+- Implemented connecting edges vla click command
 
 [End]
