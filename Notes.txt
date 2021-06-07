@@ -1,6 +1,21 @@
 [RESOURCES]
 - Pygame?
 
+[CONTROLS]
+
+Creating and connecting nodes
+- Left click the highlighted node to unhighlight it
+  - This is for the purpose of highlighting a new node.
+- Left click to highlight a node if no nodes are highlighted
+  - If at least a node is, create edge between all highlighted nodes and target node
+- Left click blank space to create a new node and highlight it
+- Right click a node to create an edge between prev_node and it, setting it
+  as the new "prev_node"
+  - this is equivalent to traversing to it.
+- Right click blank space to unhighlight previously highlighted node
+  - Repeatedly right click to keep backtracking highlights?
+  - No modification to floorplan
+
 
 <<<<<<<<{{{ commit 01039d3bb4ad7635db09958d21d0d59e13bcf0c8 }}}>>>>>>>>
 Notes:
@@ -99,6 +114,19 @@ also implementing visualisation of the traversal
 - Implemented [Right click] [Blank spot]
 
 Note that I don't actually have a method for highlighting multiple nodes... Hmm, would that be necessary?
+
+
+<<<<<<<<{{{ commit 2e9fdd8c2bbca738b5e09bb551da3f5989057052 }}}>>>>>>>>
+Commands:
+We should click "s" on the keyboard over the start node to designate it as the start node, and click
+"g" over the goal node to designate it as the goal node. Then implement the search algorithm over it.
+
+- Implemented designation of start and goal nodes
+- Implemented visualisation of start and goal nodes
+- Incorporated searching algorithm into overall main framework
+- Implemented visualisation of shortest path
+
+Now what...? Think about it tomorrow.
 
 
 
