@@ -16,6 +16,11 @@ Creating and connecting nodes
   - Repeatedly right click to keep backtracking highlights?
   - No modification to floorplan
 
+Node interaction:
+- Delete nodes:
+  > Highlight node (via right click or left click when no nodes are highlighted)
+  > press "Del" or "Backspace" on keyboard
+
 
 <<<<<<<<{{{ commit 01039d3bb4ad7635db09958d21d0d59e13bcf0c8 }}}>>>>>>>>
 Notes:
@@ -127,6 +132,39 @@ We should click "s" on the keyboard over the start node to designate it as the s
 - Implemented visualisation of shortest path
 
 Now what...? Think about it tomorrow.
+
+
+<<<<<<<<{{{ commit c24829b6facfcca1b3a4f8350f7d841ab569120d }}}>>>>>>>>>
+Necessary features:
+- undoing of actions (ctrl + z)?
+  - Just realised, might be harder than I thought it was gonna be lol.
+  - Let's skip this for now
+- [DONE] Moving nodes
+- [DONE] Deleting nodes
+- Deleting edges
+- Saving floorplans
+- Some sort of interface?
+- Zooming in and out
+- Modifying node type
+  - Right click highlighted node?
+- Multiple floors
+- User and user access
+
+What features should the dropdown item have?
+- Move
+- Copy
+- Paste
+- Delete
+- highlight
+- Unhighlight
+- Change attributes
+- Delete edge
+
+- Implemending Deleting nodes
+- Implemented part of rightclick_dropdown menu
+- Implemending Moving nodes
+- Implemented a big part of the framework to make the above commands achievable.
+
 
 
 

@@ -158,6 +158,28 @@ class Node:
     
 
     """
+    Creates and returns a deepcopy of the current node
+    """
+    def deepcopy(self):
+        new_node = Node(self.parent_Floor, self.name, self.x, self.y)
+        new_edges = {}
+        for edge in self.edges:
+            new_edges[edge] = self.edges[edge]
+        new_node.set_edges(new_edges)
+        return new_node
+    
+
+    """
+    Moves the node to the new location, performing new edge length calculations
+    """
+    def move_to(self, pos):
+        self.x = pos[0]
+        self.y = pos[1]
+        for edge in self.edges:
+            self.edges[edge] = self.calculate_distance(edge)
+    
+
+    """
     Unhighlights the current node by setting self.highlighted = False
     """
     def unhighlight(self):
@@ -170,14 +192,27 @@ class Node:
     def get_x(self):
         return self.x
     
+    def set_x(self, x):
+        self.x = x
+    
     def get_y(self):
         return self.y
+    
+    def set_y(self, y):
+        self.y = y
     
     def get_pos(self):
         return (self.x, self.y)
     
+    def set_pos(self, pos):
+        self.x = pos[0]
+        self.y = pos[1]
+    
     def get_edges(self):
         return self.edges
+    
+    def set_edges(self, edges):
+        self.edges = edges
     
     def get_name(self):
         return self.name

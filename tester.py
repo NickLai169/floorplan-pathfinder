@@ -4,7 +4,7 @@ import time
 import itertools
 from floors import *
 from traversal import *
-from visualizer import *
+from interface import *
 from main import *
 
 class Ball(pygame.sprite.Sprite):

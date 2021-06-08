@@ -76,7 +76,6 @@ class A_Star_Search(Pathfinder):
 
         target_found = False
         while curr_node != target and fringe:
-            print("I MADE IT HERE 1")
             curr_node = fringe.pop(0)
             tr_parent_map[curr_node] = parent_map[curr_node]
             cost_to_node[curr_node] = cost_to_node[parent_map[curr_node]] + curr_node.get_distance(parent_map[curr_node])
@@ -88,12 +87,10 @@ class A_Star_Search(Pathfinder):
                     parent_map[node] = curr_node
                 if node not in visited and node not in fringe:
                     fringe.append(node)
-            print("I MADE IT HERE 2")
             fringe.sort(key=lambda node: heuristic(node, target) + parent_map[node].get_distance(node)  + cost_to_node[parent_map[node]])
             
             if curr_node == target:
                 target_found = True
-        print("I MADE IT HERE 3")
             
         if not target_found:
             print("No possible path from {start} to {target} found.".format(start=start, target=target))
@@ -105,7 +102,6 @@ class A_Star_Search(Pathfinder):
             ret_path = [curr_node] + ret_path
             curr_node = tr_parent_map[curr_node]
         ret_path = [curr_node] + ret_path
-        print("I MADE IT HERE 4")
         return ret_path
 
 class Dijkstras_algorithm(Pathfinder):
